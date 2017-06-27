@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [x] User can take a photo, add a caption, and post it to "Instagram"
 - [x] User can view the last 20 posts submitted to "Instagram"
 - [x] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
 - [ ] User can tap a post to view post details, including timestamp and creation
 - [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
 

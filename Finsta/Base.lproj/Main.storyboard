@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Finsta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginID" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Finsta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -89,9 +89,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h61-6Z-cvW">
-                                                    <rect key="frame" x="47" y="8" width="79" height="21"/>
+                                                    <rect key="frame" x="57" y="8" width="165" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -103,7 +103,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-Tr-OMx">
-                                                    <rect key="frame" x="0.0" y="95" width="375" height="255"/>
+                                                    <rect key="frame" x="0.0" y="76" width="375" height="255"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -143,7 +143,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gxj-eV-Vai">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fen-er-sph" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" id="Fen-er-sph" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g7a-0X-KVE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

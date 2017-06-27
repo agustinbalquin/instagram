@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITableViewDataSource,  UITableViewDelegate {
+class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate  {
 
     
     
@@ -22,13 +22,14 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     var imageObjects: [PFObject]?
+    var isMoreDataLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.onQuery()
+        self.onRefresh()
        
         
         let refreshControl = UIRefreshControl()
@@ -69,6 +70,25 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         return cell
     }
 
+    // On refresh
+    // =======================
+    func onRefresh() {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                self.imageObjects = posts
+                self.tableView.reloadData()
+                
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+
     
     
     // On Query
@@ -81,7 +101,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if posts != nil {
-                self.imageObjects = posts
+                for post in posts! {
+                    self.imageObjects!.append(post)
+                }
                 self.tableView.reloadData()
 
             } else {
@@ -92,6 +114,31 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Infinite Scroll
+    // ====================
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+               onQuery()
+            }
+        }
+    }
     
     
     

@@ -26,7 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         
         if PFUser.current() != nil {
+//            let newController: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginSegue") as! UIViewController
+//            self.setViewControllers(newController, animated: false)
+//            
             
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "navID") as! UIViewController
+            window?.rootViewController = vc
         }
         
         return true
