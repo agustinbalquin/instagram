@@ -32,7 +32,7 @@ The following **optional** features are implemented:
 
 
 The following **additional** features are implemented:
-
+- [x] Animated NSNotfication
 - [x] User can sign out
 - [ ] List anything else that you can get done to improve the app functionality!
 

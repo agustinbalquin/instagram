@@ -36,7 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("logoutNotfication"), object: nil, queue: OperationQueue.main, using: { (Notification) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "loginID") as! LoginViewController
-            self.window?.rootViewController = vc
+            UIView.transition(with: self.window!, duration: 0.4, options: .transitionCrossDissolve, animations: {
+                self.window?.rootViewController = vc
+            }, completion: { completed in })
+            
         })
         
         return true
