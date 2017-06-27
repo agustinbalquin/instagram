@@ -28,19 +28,21 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         tableView.delegate = self
         tableView.dataSource = self
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
-
+        self.onQuery()
+       
         
-        // Do any additional setup after loading the view.
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
-    
+    // TableView
+    // ==============
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if imageObjects == nil{
             return 0
@@ -69,10 +71,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
     
     
-    
-    
-    
-    func onTimer() {
+    // On Query
+    // =====================
+    func onQuery() {
         let query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.limit = 20
@@ -95,6 +96,30 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    
+    
+    
+    // Refresh Control
+    // ===============
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                self.imageObjects = posts
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
+                
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+
     // Image Posting
     // ================
     
