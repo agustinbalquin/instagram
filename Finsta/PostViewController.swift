@@ -23,6 +23,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
+
+    @IBAction func cancelPost(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func setImage(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -37,6 +43,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.present(vc, animated: true, completion: nil)
     }
+    
+    
     @IBAction func sendPost(_ sender: Any) {
         let caption = captionField.text ?? ""
         if imageView.image == nil {
