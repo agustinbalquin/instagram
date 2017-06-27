@@ -187,6 +187,14 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     
+    // Sign Out
+    // ==============
+    @IBAction func signOut(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in }
+        NotificationCenter.default.post(name: NSNotification.Name("logoutNotfication"),object: nil)
+    }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
