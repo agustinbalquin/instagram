@@ -16,6 +16,7 @@
 		E633BBF31F0260A4000F6EB6 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */; };
 		E633BBF51F02657D000F6EB6 /* ImagePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */; };
 		E633BBF71F02710A000F6EB6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF61F02710A000F6EB6 /* Post.swift */; };
+		E633BBF91F0313D6000F6EB6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF81F0313D6000F6EB6 /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
 		E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostCell.swift; sourceTree = "<group>"; };
 		E633BBF61F02710A000F6EB6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E633BBF81F0313D6000F6EB6 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */,
 				E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */,
 				E633BBF61F02710A000F6EB6 /* Post.swift */,
+				E633BBF81F0313D6000F6EB6 /* PostViewController.swift */,
 			);
 			path = Finsta;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E633BBF91F0313D6000F6EB6 /* PostViewController.swift in Sources */,
 				E633BBF31F0260A4000F6EB6 /* PhotoMapViewController.swift in Sources */,
 				E633BBF11F01CEE0000F6EB6 /* LoginViewController.swift in Sources */,
 				E633BBDF1F01C68E000F6EB6 /* AppDelegate.swift in Sources */,
