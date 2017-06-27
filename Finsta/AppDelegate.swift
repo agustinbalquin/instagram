@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        if PFUser.current() != nil {
+            
+        }
+        
         return true
     }
 

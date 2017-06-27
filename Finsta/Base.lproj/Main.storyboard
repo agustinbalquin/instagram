@@ -57,7 +57,7 @@
                     <connections>
                         <outlet property="passwordField" destination="0fj-So-kcA" id="21u-cc-saz"/>
                         <outlet property="usernameField" destination="vnU-cK-g6a" id="zB9-fI-rGH"/>
-                        <segue destination="bcB-QL-RWG" kind="presentation" identifier="loginSegue" id="lzF-Iv-R67"/>
+                        <segue destination="Fen-er-sph" kind="presentation" identifier="loginSegue" id="lzF-Iv-R67"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,7 +67,7 @@
         <!--View Controller-->
         <scene sceneID="fGb-Gf-onb">
             <objects>
-                <viewController id="bcB-QL-RWG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loggedIn" id="bcB-QL-RWG" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BfT-K9-GnQ"/>
                         <viewControllerLayoutGuide type="bottom" id="nyD-uh-9Hr"/>
@@ -77,10 +77,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="S2a-B5-VMd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZJ-9X-9Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="137"/>
+            <point key="canvasLocation" x="2028" y="136.28185907046478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gxj-eV-Vai">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fen-er-sph" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g7a-0X-KVE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bcB-QL-RWG" kind="relationship" relationship="rootViewController" id="aig-e6-HYR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lXb-E1-kNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088.8" y="136.28185907046478"/>
         </scene>
     </scenes>
 </document>
