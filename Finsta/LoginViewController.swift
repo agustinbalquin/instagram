@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             
-            if let error = error {
+            if error != nil {
                 
                 let alertController = UIAlertController(title: "Error", message: "Username/Password is incorrect", preferredStyle: .alert)
                 
