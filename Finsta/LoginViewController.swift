@@ -29,17 +29,7 @@ class LoginViewController: UIViewController {
         let newUser = PFUser()
         newUser.username = usernameField.text
         newUser.password = passwordField.text
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
-            newUser.signUpInBackground { (success: Bool, error: Error?) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print("User Registered successfully")
-                    // manually segue to logged in view
-                }
-            }
-            
-        }
+        
         if usernameField.text!.isEmpty || passwordField.text!.isEmpty {
             let alertController = UIAlertController(title: "Error", message: "Username/Password is empty", preferredStyle: .alert)
             
@@ -47,25 +37,74 @@ class LoginViewController: UIViewController {
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 // handle response here.
             }
-            // add the OK action to the alert controller
             alertController.addAction(OKAction)
             
             present(alertController, animated: true) {
-                // optional code for what happens after the alert controller has finished presenting
+                
             }
         }
+        
+        print("hello")
+        newUser.signUpInBackground { (success: Bool, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+//                self.alert202()
+            } else {
+                print("User Registered successfully")
+                // manually segue to logged in view
+            }
+        }
+        
+        
     }
 
     @IBAction func onSignIn(_ sender: Any) {
+        let username = usernameField.text ?? ""
+        let password = passwordField.text ?? ""
+        print(username)
+        print(password)
+        
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+            
+            if let error = error {
+                
+                let alertController = UIAlertController(title: "Error", message: "Username/Password is incorrect", preferredStyle: .alert)
+                
+                // create an OK action
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    // handle response here.
+                }
+                // add the OK action to the alert controller
+                alertController.addAction(OKAction)
+                
+                self.present(alertController, animated: true) {
+                   
+                }
+            }
+            else {
+                print("User logged in successfully")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+        }
     }
-    /*
-    // MARK: - Navigation
+    
+    
+    
+    
+//    func alert202() {
+//        let alertController = UIAlertController(title: "Error", message: "Username is taken", preferredStyle: .alert)
+//        
+//        // create an OK action
+//        let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
+//            // handle response here.
+//        }
+//        alertController.addAction(OKAction)
+//        
+//        present(alertController, animated: true) {
+//            
+//        }
+//    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+
 
 }
