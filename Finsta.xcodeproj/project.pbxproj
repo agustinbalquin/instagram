@@ -13,6 +13,7 @@
 		E633BBE41F01C68E000F6EB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE21F01C68E000F6EB6 /* Main.storyboard */; };
 		E633BBE61F01C68E000F6EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE51F01C68E000F6EB6 /* Assets.xcassets */; };
 		E633BBE91F01C68E000F6EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE71F01C68E000F6EB6 /* LaunchScreen.storyboard */; };
+		E633BBF11F01CEE0000F6EB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E633BBE51F01C68E000F6EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E633BBE81F01C68E000F6EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E633BBEA1F01C68E000F6EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				E633BBDE1F01C68E000F6EB6 /* AppDelegate.swift */,
 				E633BBE01F01C68E000F6EB6 /* ViewController.swift */,
 				E633BBE21F01C68E000F6EB6 /* Main.storyboard */,
+				E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */,
 				E633BBE51F01C68E000F6EB6 /* Assets.xcassets */,
 				E633BBE71F01C68E000F6EB6 /* LaunchScreen.storyboard */,
 				E633BBEA1F01C68E000F6EB6 /* Info.plist */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E633BBF11F01CEE0000F6EB6 /* LoginViewController.swift in Sources */,
 				E633BBE11F01C68E000F6EB6 /* ViewController.swift in Sources */,
 				E633BBDF1F01C68E000F6EB6 /* AppDelegate.swift in Sources */,
 			);
@@ -381,6 +385,7 @@
 				E633BBEF1F01C68E000F6EB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
