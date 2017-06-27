@@ -13,8 +13,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
     
     
-//    Outlets
-//    ==================
+    // Outlets
+    // ==================
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +28,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+
         
         // Do any additional setup after loading the view.
     }
@@ -50,12 +51,18 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! ImagePostCell
         let object = imageObjects![indexPath.row]
-        let message = object["text"] as? String
-        if let user = object["user"] as? PFUser {
+        let message = object["caption"] as! String
+        if let user = object["author"] as? PFUser {
             cell.usernameLabel.text = user.username
         } else {
             cell.usernameLabel.text = "No Name"
         }
+        let image = object["media"] as! PFFile
+        
+        image.getDataInBackground { (imageData:Data!,error: Error?) in
+            cell.imagePost.image = UIImage(data:imageData)
+        }
+       
         cell.captionLabel.text = message
         return cell
     }
@@ -64,6 +71,32 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    func onTimer() {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                self.imageObjects = posts
+                self.tableView.reloadData()
+
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    // Image Posting
+    // ================
     
     @IBAction func postPhoto(_ sender: Any) {
         print("postImage")
