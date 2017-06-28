@@ -28,11 +28,11 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
             let image = profileImage as! PFFile
             image.getDataInBackground { (imageData:Data!,error: Error?) in
                 self.profileImage.image = UIImage(data:imageData)
+                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
             }
         
         }
         
-
         
         onRefresh()
 

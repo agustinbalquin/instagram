@@ -75,6 +75,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+        cell.userPhoto.layer.cornerRadius = cell.userPhoto.frame.size.width/2
+        
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
             cell.usernameLabel.text = user.username

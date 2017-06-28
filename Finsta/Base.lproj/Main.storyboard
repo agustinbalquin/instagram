@@ -103,7 +103,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="PFN-Km-FXW">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="PFN-Km-FXW">
                                                     <rect key="frame" x="8" y="1" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -116,11 +116,11 @@
                                             <outlet property="usernameLabel" destination="h61-6Z-cvW" id="8Ga-X1-NaR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="488" id="bXA-FH-zJg" customClass="ImagePostCell" customModule="Finsta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="488"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="470" id="bXA-FH-zJg" customClass="ImagePostCell" customModule="Finsta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="470"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bXA-FH-zJg" id="pGo-hU-8SJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="487.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="469.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insert Caption Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayL-UM-dGs">
@@ -169,12 +169,10 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="hcW-r0-MU7">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LM6-a2-nuH">
-                                <rect key="frame" x="276" y="7" width="164" height="128"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LM6-a2-nuH">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="postPhoto:" destination="bcB-QL-RWG" eventType="touchUpInside" id="NDI-bH-wZp"/>
                                 </connections>
@@ -298,7 +296,7 @@
         <scene sceneID="Gxj-eV-Vai">
             <objects>
                 <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" id="Fen-er-sph" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="R1o-TC-9H3"/>
+                    <tabBarItem key="tabBarItem" title="Feed" id="R1o-TC-9H3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g7a-0X-KVE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -344,7 +342,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-2k-gYI">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-2k-gYI">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -429,7 +427,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed_tab" width="25" height="25"/>
         <image name="instagram_gradient" width="5120" height="2880"/>
         <image name="intsagramLogo-1" width="1785" height="612"/>
         <image name="like" width="512" height="512"/>
