@@ -25,10 +25,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="intsagramLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9cP-Eo-JKx">
-                                <rect key="frame" x="93" y="100" width="188" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnU-cK-g6a">
                                 <rect key="frame" x="97" y="276" width="176" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +55,10 @@
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DrA-NN-XCD"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="intsagramLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="9cP-Eo-JKx">
+                                <rect key="frame" x="93" y="72" width="188" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -314,7 +314,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="o5k-eC-OOZ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="i34-XN-gKo" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabID" automaticallyAdjustsScrollViewInsets="NO" id="i34-XN-gKo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DeQ-HS-Tui">
                         <autoresizingMask key="autoresizingMask"/>
@@ -332,7 +332,7 @@
         <!--Profile-->
         <scene sceneID="lZM-HD-gtB">
             <objects>
-                <viewController id="Ert-cn-WIN" sceneMemberID="viewController">
+                <viewController id="Ert-cn-WIN" customClass="UserController" customModule="Finsta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VuE-5i-iyz"/>
                         <viewControllerLayoutGuide type="bottom" id="tmj-VU-0q1"/>
@@ -340,9 +340,56 @@
                     <view key="view" contentMode="scaleToFill" id="etG-Lq-SMl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-2k-gYI">
+                                <rect key="frame" x="16" y="72" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l2z-h8-Zav">
+                                <rect key="frame" x="0.0" y="243" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GRr-ia-6EU">
+                                    <size key="itemSize" width="125" height="125"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCollection" id="ELk-5q-7nY" customClass="UserCollectionViewCell" customModule="Finsta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Br-YP-WuO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="userImage" destination="4Br-YP-WuO" id="wT9-7J-Kg3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIN-Bd-NhG">
+                                <rect key="frame" x="16" y="180" width="159" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="AMv-C6-W6e"/>
+                    <connections>
+                        <outlet property="collectionView" destination="l2z-h8-Zav" id="06s-lx-P0e"/>
+                        <outlet property="userLabel" destination="FIN-Bd-NhG" id="t8e-xi-wpo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lay-N1-Ehn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,7 +417,7 @@
     </scenes>
     <resources>
         <image name="instagram_gradient" width="5120" height="2880"/>
-        <image name="intsagramLogo" width="1785" height="612"/>
+        <image name="intsagramLogo-1" width="1785" height="612"/>
         <image name="like" width="512" height="512"/>
         <image name="user" width="512" height="512"/>
     </resources>

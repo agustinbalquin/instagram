@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if PFUser.current() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "navID") as! UIViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "tabID") as! UIViewController
             window?.rootViewController = vc
         }
         

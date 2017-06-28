@@ -168,7 +168,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             // When the user has scrolled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
                 isMoreDataLoading = true
-                
+                print("Please help me")
                onQuery()
             }
         }

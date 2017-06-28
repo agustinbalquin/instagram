@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Parse
 
-class UserController: UIViewController {
+class UserController: UIViewController, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    @IBOutlet weak var userLabel: UILabel!
+    
+    var imageObjects: [PFObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
+        userLabel.text = PFUser.current()?.username
+        
+        
+        onRefresh()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +32,77 @@ class UserController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Collection View
+    // ==================
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if imageObjects != nil {
+            return imageObjects!.count
+        }
+        return 0
+        
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userCollection", for: indexPath) as! UserCollectionViewCell
+        
+        let object = imageObjects![indexPath.item]
+        
+        
+        let image = object["media"] as! PFFile
+        image.getDataInBackground { (imageData:Data!,error: Error?) in
+            cell.userImage.image = UIImage(data:imageData)
+        }
+        
+        return cell
+    }
+    
+    // On refresh
+    // =======================
+    func onRefresh() {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                self.imageObjects = posts
+                self.collectionView.reloadData()
+                
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+    
+    
+    
+    // On Query
+    // =====================
+    func onQuery() {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                for post in posts! {
+                    self.imageObjects!.append(post)
+                }
+                self.collectionView.reloadData()
+                
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+
+    
+    
+    
+   
 
 }
