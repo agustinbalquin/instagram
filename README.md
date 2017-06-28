@@ -20,11 +20,11 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Show the username and creation time for each post
+- [x] Show the username and creation time for each post
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
-- [ ] User Profiles:
-   - [ ] Allow the logged in user to add a profile photo
-   - [ ] Display the profile photo with each post
+- [x] User Profiles:
+   - [x] Allow the logged in user to add a profile photo
+   - [x] Display the profile photo with each post
    - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
@@ -33,6 +33,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [x] User can upload a profile picture
+- [x] Style the login page to look like the real Instagram login page
 - [x] User Section Headers
 - [x] Animated NSNotfication
 - [x] User can sign out

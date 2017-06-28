@@ -78,6 +78,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
             cell.usernameLabel.text = user.username
+            let pffile = user["profileImage"] as! PFFile
+            pffile.getDataInBackground { (imageData:Data!,error: Error?) in
+                cell.userPhoto.image = UIImage(data:imageData)
+            }
         } else {
             cell.usernameLabel.text = "No Name"
         }
@@ -132,6 +136,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
                 print(error?.localizedDescription ?? "General Error")
             }
         }
+        
     }
     
     
@@ -169,7 +174,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
                 isMoreDataLoading = true
                 print("Please help me")
-               onQuery()
+                onQuery()
             }
         }
     }

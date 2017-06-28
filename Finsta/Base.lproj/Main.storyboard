@@ -169,10 +169,12 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="hcW-r0-MU7">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LM6-a2-nuH">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LM6-a2-nuH">
+                                <rect key="frame" x="276" y="7" width="164" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post"/>
+                                <state key="normal" title="Post">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="postPhoto:" destination="bcB-QL-RWG" eventType="touchUpInside" id="NDI-bH-wZp"/>
                                 </connections>
@@ -296,7 +298,7 @@
         <scene sceneID="Gxj-eV-Vai">
             <objects>
                 <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" id="Fen-er-sph" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="R1o-TC-9H3"/>
+                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="R1o-TC-9H3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g7a-0X-KVE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -317,6 +319,7 @@
                 <tabBarController storyboardIdentifier="tabID" automaticallyAdjustsScrollViewInsets="NO" id="i34-XN-gKo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DeQ-HS-Tui">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -341,9 +344,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-2k-gYI">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-2k-gYI">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OIi-Hf-5lo" appends="YES" id="VXo-Xk-Bz5"/>
+                                </connections>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l2z-h8-Zav">
                                 <rect key="frame" x="0.0" y="243" width="375" height="375"/>
@@ -388,10 +395,16 @@
                     <navigationItem key="navigationItem" title="Profile" id="AMv-C6-W6e"/>
                     <connections>
                         <outlet property="collectionView" destination="l2z-h8-Zav" id="06s-lx-P0e"/>
+                        <outlet property="profileImage" destination="BWv-2k-gYI" id="qrX-jF-hdR"/>
                         <outlet property="userLabel" destination="FIN-Bd-NhG" id="t8e-xi-wpo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lay-N1-Ehn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OIi-Hf-5lo">
+                    <connections>
+                        <action selector="changeProfileImage:" destination="Ert-cn-WIN" id="2pS-sh-PGf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2028" y="951.27436281859082"/>
         </scene>
@@ -399,7 +412,7 @@
         <scene sceneID="pEV-V3-0uv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fad-vx-mss" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="msY-KZ-8EW"/>
+                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile_tab" id="msY-KZ-8EW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xZ-L5-QQs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -416,9 +429,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="instagram_gradient" width="5120" height="2880"/>
         <image name="intsagramLogo-1" width="1785" height="612"/>
         <image name="like" width="512" height="512"/>
+        <image name="profile_tab" width="25" height="25"/>
         <image name="user" width="512" height="512"/>
     </resources>
 </document>
