@@ -10,7 +10,6 @@ import UIKit
 
 class ImagePostCell: UITableViewCell {
 
-    @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var imagePost: UIImageView!
     
@@ -27,5 +26,7 @@ class ImagePostCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

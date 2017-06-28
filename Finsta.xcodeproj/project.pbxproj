@@ -10,13 +10,15 @@
 		4E7A85DC9CA762A7EF5F4705 /* Pods_Finsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB143C369678B39553396BB /* Pods_Finsta.framework */; };
 		E633BBDF1F01C68E000F6EB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBDE1F01C68E000F6EB6 /* AppDelegate.swift */; };
 		E633BBE41F01C68E000F6EB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE21F01C68E000F6EB6 /* Main.storyboard */; };
-		E633BBE61F01C68E000F6EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE51F01C68E000F6EB6 /* Assets.xcassets */; };
 		E633BBE91F01C68E000F6EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E633BBE71F01C68E000F6EB6 /* LaunchScreen.storyboard */; };
 		E633BBF11F01CEE0000F6EB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */; };
 		E633BBF31F0260A4000F6EB6 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */; };
 		E633BBF51F02657D000F6EB6 /* ImagePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */; };
 		E633BBF71F02710A000F6EB6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF61F02710A000F6EB6 /* Post.swift */; };
 		E633BBF91F0313D6000F6EB6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBF81F0313D6000F6EB6 /* PostViewController.swift */; };
+		E633BBFB1F032338000F6EB6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBFA1F032338000F6EB6 /* DetailViewController.swift */; };
+		E633BBFD1F039CC6000F6EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E633BBFC1F039CC6000F6EB6 /* Assets.xcassets */; };
+		E633BBFF1F03A31F000F6EB6 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633BBFE1F03A31F000F6EB6 /* HeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +28,6 @@
 		E633BBDB1F01C68E000F6EB6 /* Finsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E633BBDE1F01C68E000F6EB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E633BBE31F01C68E000F6EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E633BBE51F01C68E000F6EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E633BBE81F01C68E000F6EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E633BBEA1F01C68E000F6EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +35,9 @@
 		E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostCell.swift; sourceTree = "<group>"; };
 		E633BBF61F02710A000F6EB6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E633BBF81F0313D6000F6EB6 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		E633BBFA1F032338000F6EB6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E633BBFC1F039CC6000F6EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E633BBFE1F03A31F000F6EB6 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,16 +92,34 @@
 			children = (
 				E633BBDE1F01C68E000F6EB6 /* AppDelegate.swift */,
 				E633BBE21F01C68E000F6EB6 /* Main.storyboard */,
-				E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */,
-				E633BBE51F01C68E000F6EB6 /* Assets.xcassets */,
+				E633BC011F03A339000F6EB6 /* Controllers */,
+				E633BC001F03A32C000F6EB6 /* Cells */,
+				E633BBF61F02710A000F6EB6 /* Post.swift */,
+				E633BBFC1F039CC6000F6EB6 /* Assets.xcassets */,
 				E633BBE71F01C68E000F6EB6 /* LaunchScreen.storyboard */,
 				E633BBEA1F01C68E000F6EB6 /* Info.plist */,
-				E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */,
-				E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */,
-				E633BBF61F02710A000F6EB6 /* Post.swift */,
-				E633BBF81F0313D6000F6EB6 /* PostViewController.swift */,
 			);
 			path = Finsta;
+			sourceTree = "<group>";
+		};
+		E633BC001F03A32C000F6EB6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E633BBF41F02657D000F6EB6 /* ImagePostCell.swift */,
+				E633BBFE1F03A31F000F6EB6 /* HeaderCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		E633BC011F03A339000F6EB6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E633BBFA1F032338000F6EB6 /* DetailViewController.swift */,
+				E633BBF01F01CEE0000F6EB6 /* LoginViewController.swift */,
+				E633BBF21F0260A4000F6EB6 /* PhotoMapViewController.swift */,
+				E633BBF81F0313D6000F6EB6 /* PostViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E633BBE91F01C68E000F6EB6 /* LaunchScreen.storyboard in Resources */,
-				E633BBE61F01C68E000F6EB6 /* Assets.xcassets in Resources */,
+				E633BBFD1F039CC6000F6EB6 /* Assets.xcassets in Resources */,
 				E633BBE41F01C68E000F6EB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,8 +250,10 @@
 				E633BBF31F0260A4000F6EB6 /* PhotoMapViewController.swift in Sources */,
 				E633BBF11F01CEE0000F6EB6 /* LoginViewController.swift in Sources */,
 				E633BBDF1F01C68E000F6EB6 /* AppDelegate.swift in Sources */,
+				E633BBFF1F03A31F000F6EB6 /* HeaderCell.swift in Sources */,
 				E633BBF51F02657D000F6EB6 /* ImagePostCell.swift in Sources */,
 				E633BBF71F02710A000F6EB6 /* Post.swift in Sources */,
+				E633BBFB1F032338000F6EB6 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

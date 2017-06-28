@@ -23,6 +23,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imageObjects: [PFObject]?
     var isMoreDataLoading = false
+    var photoHeaderViewHeight:CGFloat = 45
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,6 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         tableView.dataSource = self
         
         self.onRefresh()
-       
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -48,26 +48,43 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         if imageObjects == nil{
             return 0
         }
-        return imageObjects!.count
+        return 1
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if imageObjects == nil{
+            return 0
+        }
+        return imageObjects!.count
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! ImagePostCell
         let object = imageObjects![indexPath.row]
         let message = object["caption"] as! String
-        if let user = object["author"] as? PFUser {
-            cell.usernameLabel.text = user.username
-        } else {
-            cell.usernameLabel.text = "No Name"
-        }
         let image = object["media"] as! PFFile
         
         image.getDataInBackground { (imageData:Data!,error: Error?) in
             cell.imagePost.image = UIImage(data:imageData)
         }
-       
         cell.captionLabel.text = message
         return cell
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+        let object = imageObjects![section]
+        if let user = object["author"] as? PFUser {
+            cell.usernameLabel.text = user.username
+        } else {
+            cell.usernameLabel.text = "No Name"
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return photoHeaderViewHeight
     }
 
     // On refresh
@@ -117,6 +134,26 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    // Prepare for Segue
+    // =================
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "postSegue" {
+            let cell =  sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let object = imageObjects![indexPath.row]
+                let detailViewController = segue.destination as! DetailViewController
+                
+                let message = object["caption"] as! String
+                let image = object["media"] as! PFFile
+                let date = object["createdAt"] as! String
+                detailViewController.dateLabel.text = date
+                detailViewController.captionLabel.text = message
+                image.getDataInBackground { (imageData:Data!,error: Error?) in
+                    detailViewController.detailImage.image = UIImage(data:imageData)
+                }
+            }
+        }
+    }
     
     
     
@@ -143,6 +180,11 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    
+    
+    
+
     
     
     
