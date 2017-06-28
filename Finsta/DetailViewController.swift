@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class DetailViewController: UIViewController {
 
@@ -14,9 +15,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var detailImage: UIImageView!
     
+    var imageObject: PFObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let message = imageObject!["caption"] as! String
+        let image = imageObject!["media"] as! PFFile
+        if let date = imageObject!["creationDate"]{
+            dateLabel.text = date as! String
+        }
+        else {
+            dateLabel.text = "Unknown Date"
+        }
+        captionLabel.text = message
+        image.getDataInBackground { (imageData:Data!,error: Error?) in
+            self.detailImage.image = UIImage(data:imageData)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +39,7 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

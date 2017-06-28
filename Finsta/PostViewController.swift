@@ -65,11 +65,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
                 self.present(alertController, animated: true) { }
                 
+                
             } else if let error = error {
                 print("Problem posting: \(error.localizedDescription)")
             }
         }
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerController(_ picker: UIImagePickerController,

@@ -55,11 +55,12 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         if imageObjects == nil{
             return 0
         }
+        print("numsecs \(imageObjects!.count)")
         return imageObjects!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! ImagePostCell
-        let object = imageObjects![indexPath.row]
+        let object = imageObjects![indexPath.section]
         let message = object["caption"] as! String
         let image = object["media"] as! PFFile
         
@@ -85,6 +86,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return photoHeaderViewHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // On refresh
@@ -142,15 +147,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             if let indexPath = tableView.indexPath(for: cell) {
                 let object = imageObjects![indexPath.row]
                 let detailViewController = segue.destination as! DetailViewController
-                
-                let message = object["caption"] as! String
-                let image = object["media"] as! PFFile
-                let date = object["createdAt"] as! String
-                detailViewController.dateLabel.text = date
-                detailViewController.captionLabel.text = message
-                image.getDataInBackground { (imageData:Data!,error: Error?) in
-                    detailViewController.detailImage.image = UIImage(data:imageData)
-                }
+                detailViewController.imageObject = object
             }
         }
     }
