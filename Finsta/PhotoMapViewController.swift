@@ -24,6 +24,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     var imageObjects: [PFObject]?
     var isMoreDataLoading = false
     var photoHeaderViewHeight:CGFloat = 45
+    var linkedUser: PFUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
             cell.usernameButton.setTitle(user.username, for: .normal)
+            self.linkedUser = user
             if let pffile = user["profileImage"] {
                 let pfreal = pffile as! PFFile
                 pfreal.getDataInBackground { (imageData:Data!,error: Error?) in
@@ -107,6 +109,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         } else {
             cell.usernameButton.setTitle("No Name", for: .normal)
         }
+        
+        cell.usernameButton.addTarget(self, action: #selector(PhotoMapViewController.linkAction), for:.touchUpInside)
         return cell
     }
     
@@ -177,12 +181,14 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
                 detailViewController.imageObject = object
             }
         } else if segue.identifier == "userLinkSegue" {
-            let cell = sender as! UITableViewCell
-            if let indexPath = tableView.indexPath(for: cell) {
-                let object = imageObjects![indexPath.section]
-                let userController = segue.destination as! UserController
-                userController.user = object["author"] as! PFUser
-            }
+//            let cell = sender as! UITableViewCell
+//            if let indexPath = tableView.indexPath(for: cell) {
+//                let object = imageObjects![indexPath.section]
+//                let userController = segue.destination as! UserController
+//                userController.user = object["author"] as! PFUser
+//            }
+            let userController = segue.destination as! UserController
+            userController.user = self.linkedUser
         }
     }
     
@@ -256,7 +262,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     
-    
+    func linkAction() {
+        performSegue(withIdentifier: "userLinkSegue", sender: self)
+    }
 
     
 

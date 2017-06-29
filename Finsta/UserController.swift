@@ -186,10 +186,6 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         }
         
         self.present(vc, animated: true, completion: nil)
-        
-
-        
-        
     }
     
     

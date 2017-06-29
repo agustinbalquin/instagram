@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 - [x] User Profiles:
    - [x] Allow the logged in user to add a profile photo
    - [x] Display the profile photo with each post
-   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+   - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [x] User can like a post and see number of likes for each post in the post details screen.
 - [x] Run your app on your phone and use the camera to take the photo
@@ -38,7 +38,6 @@ The following **additional** features are implemented:
 - [x] Style the login page to look like the real Instagram login page
 - [x] User Section Headers
 - [x] Animated NSNotfication
-- [x] User can sign out
 - [x] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
