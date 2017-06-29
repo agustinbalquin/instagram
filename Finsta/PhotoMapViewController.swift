@@ -30,6 +30,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
         self.onRefresh()
         
         let refreshControl = UIRefreshControl()
@@ -48,7 +51,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         if imageObjects == nil{
             return 0
         }
-        return 1
+        return 2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,18 +61,30 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         print("numsecs \(imageObjects!.count)")
         return imageObjects!.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! ImagePostCell
-        let object = imageObjects![indexPath.section]
-        let message = object["caption"] as! String
-        let image = object["media"] as! PFFile
-        
-        image.getDataInBackground { (imageData:Data!,error: Error?) in
-            cell.imagePost.image = UIImage(data:imageData)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! ImagePostCell
+            let object = imageObjects![indexPath.section]
+            let message = object["caption"] as! String
+            let image = object["media"] as! PFFile
+            
+            image.getDataInBackground { (imageData:Data!,error: Error?) in
+                cell.imagePost.image = UIImage(data:imageData)
+            }
+            cell.captionLabel.text = message
+            return cell
+        } else if indexPath.row == 1 {
+            print("check 1")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as! ActionCell
+            print("check 2")
+            let object = imageObjects![indexPath.section]
+            print("check 3")
+            cell.imageObject = object
+            return cell
         }
-        cell.captionLabel.text = message
-        return cell
         
+        return UITableViewCell()
         
     }
     
@@ -80,10 +95,13 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
             cell.usernameLabel.text = user.username
-            let pffile = user["profileImage"] as! PFFile
-            pffile.getDataInBackground { (imageData:Data!,error: Error?) in
-                cell.userPhoto.image = UIImage(data:imageData)
+            if let pffile = user["profileImage"] {
+                let pfreal = pffile as! PFFile
+                pfreal.getDataInBackground { (imageData:Data!,error: Error?) in
+                    cell.userPhoto.image = UIImage(data:imageData)
+                }
             }
+            
         } else {
             cell.usernameLabel.text = "No Name"
         }

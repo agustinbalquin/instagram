@@ -13,8 +13,13 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
 
     @IBOutlet weak var profileImage: UIImageView!
 
+    @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    @IBOutlet weak var editProfile: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    
     @IBOutlet weak var userLabel: UILabel!
     
     var imageObjects: [PFObject]?
@@ -32,6 +37,15 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
             }
         
         }
+        editProfile.backgroundColor = .clear
+        editProfile.layer.cornerRadius = 5
+        editProfile.layer.borderWidth = 1
+        editProfile.layer.borderColor = UIColor.lightGray.cgColor
+        
+        settingsButton.backgroundColor = .clear
+        settingsButton.layer.cornerRadius = 5
+        settingsButton.layer.borderWidth = 1
+        settingsButton.layer.borderColor = UIColor.lightGray.cgColor
         
         
         onRefresh()
