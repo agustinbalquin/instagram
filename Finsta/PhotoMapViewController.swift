@@ -82,6 +82,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         } else if indexPath.row == 1 {
             print("check 1")
             let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as! ActionCell
+            cell.delegate = self
             print("check 2")
             let object = imageObjects![indexPath.section]
             print("check 3")
@@ -110,6 +111,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         cell.userPhoto.layer.cornerRadius = cell.userPhoto.frame.size.width/2
+
         
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
@@ -205,6 +207,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 //            }
             let userController = segue.destination as! UserController
             userController.user = self.linkedUser
+        } else if segue.identifier == "commentsSegue"{
+            let cell = sender as! ActionCell
+            let commentController = segue.destination as! CommentController
+            commentController.post = cell.imageObject
         }
     }
     
@@ -287,6 +293,22 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
    
 
 }
+
+
+
+extension PhotoMapViewController: ActionCellDelegate {
+    
+    func viewComments(actionCell: ActionCell) {
+        performSegue(withIdentifier: "commentsSegue", sender: actionCell)
+    }
+}
+
+
+
+
+
+
+
 
 // Date since
 // =============

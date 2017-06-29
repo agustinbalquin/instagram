@@ -121,14 +121,14 @@
                                             <outlet property="usernameButton" destination="t8P-kR-f1s" id="xWb-F2-fVE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="397" id="bXA-FH-zJg" customClass="ImagePostCell" customModule="Finsta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="397"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="392" id="bXA-FH-zJg" customClass="ImagePostCell" customModule="Finsta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="392"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bXA-FH-zJg" id="pGo-hU-8SJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="bXA-FH-zJg" id="pGo-hU-8SJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-Tr-OMx">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-Tr-OMx">
                                                     <rect key="frame" x="0.0" y="8" width="375" height="380.5"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -148,11 +148,11 @@
                                             <segue destination="PpL-aM-waH" kind="show" identifier="detailSegue" id="w8m-7C-dp5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actionCell" rowHeight="37" id="h2O-Dh-yoo" customClass="ActionCell" customModule="Finsta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="465" width="375" height="37"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actionCell" rowHeight="42" id="h2O-Dh-yoo" customClass="ActionCell" customModule="Finsta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="460" width="375" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h2O-Dh-yoo" id="T0p-PZ-7ld">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO3-yi-kHL">
@@ -164,12 +164,20 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="300 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGL-gY-PW2">
-                                                    <rect key="frame" x="8" y="16" width="52" height="25"/>
+                                                    <rect key="frame" x="8" y="22" width="52" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgn-Sh-2It">
+                                                    <rect key="frame" x="45" y="0.0" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="commmmit"/>
+                                                    <connections>
+                                                        <action selector="commentPost:" destination="h2O-Dh-yoo" eventType="touchUpInside" id="7ZE-qP-bU7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -244,6 +252,7 @@
                         <outlet property="tableView" destination="VHl-XA-fEz" id="lDZ-Nd-lZb"/>
                         <segue destination="2YG-Lk-UCu" kind="presentation" identifier="postSegue" id="gD2-fv-aR7"/>
                         <segue destination="Ert-cn-WIN" kind="show" identifier="userLinkSegue" id="3aS-Rr-w8Y"/>
+                        <segue destination="0yn-u0-tbO" kind="show" identifier="commentsSegue" id="dvQ-Au-PFm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZJ-9X-9Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,6 +319,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPv-fc-yd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3936.8000000000002" y="135.38230884557723"/>
+        </scene>
+        <!--Comment Controller-->
+        <scene sceneID="3en-ld-0ae">
+            <objects>
+                <viewController id="0yn-u0-tbO" customClass="CommentController" customModule="Finsta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dXO-Hf-fdW"/>
+                        <viewControllerLayoutGuide type="bottom" id="OtN-Jx-lOz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="04e-96-9hg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="roK-lJ-ZMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2927" y="901"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="yYx-d1-ufc">
@@ -456,6 +484,9 @@
                                 <state key="normal" title="Edit Profile">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeProfileImage:" destination="Ert-cn-WIN" eventType="touchUpInside" id="gUO-OF-IXi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxY-fv-gjA">
                                 <rect key="frame" x="312" y="134" width="30" height="30"/>
@@ -520,6 +551,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="commmmit" width="240" height="240"/>
         <image name="feed_tab" width="25" height="25"/>
         <image name="gear" width="16" height="16"/>
         <image name="heartbeat" width="256" height="256"/>

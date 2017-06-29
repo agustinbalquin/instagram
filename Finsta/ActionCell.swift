@@ -9,12 +9,18 @@
 import UIKit
 import Parse
 
+@objc protocol ActionCellDelegate {
+    func viewComments(actionCell:ActionCell)
+}
+
 class ActionCell: UITableViewCell {
 
     @IBOutlet weak var likeLabel: UILabel!
 
     @IBOutlet weak var likeButton: UIButton!
     var liked = false
+    
+    var delegate:ActionCellDelegate?
     
     var imageObject: PFObject? {
         didSet {
@@ -34,8 +40,11 @@ class ActionCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
     
+
+    @IBAction func commentPost(_ sender: Any) {
+        delegate!.viewComments(actionCell: self)
+    }
     
     @IBAction func likePost(_ sender: Any) {
         let object = imageObject!
