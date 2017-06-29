@@ -9,9 +9,12 @@
 import UIKit
 
 class HeaderCell: UITableViewCell {
-
+    
     @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
+
+    @IBOutlet weak var usernameButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,4 +26,7 @@ class HeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func userLink(_ sender: Any) {
+    }
+    
 }

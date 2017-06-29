@@ -38,6 +38,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,7 +96,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let object = imageObjects![section]
         if let user = object["author"] as? PFUser {
-            cell.usernameLabel.text = user.username
+            cell.usernameButton.setTitle(user.username, for: .normal)
             if let pffile = user["profileImage"] {
                 let pfreal = pffile as! PFFile
                 pfreal.getDataInBackground { (imageData:Data!,error: Error?) in
@@ -103,7 +105,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             
         } else {
-            cell.usernameLabel.text = "No Name"
+            cell.usernameButton.setTitle("No Name", for: .normal)
         }
         return cell
     }
@@ -167,12 +169,19 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     // Prepare for Segue
     // =================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "postSegue" {
+        if segue.identifier == "detailSegue" {
             let cell =  sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
-                let object = imageObjects![indexPath.row]
+                let object = imageObjects![indexPath.section]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.imageObject = object
+            }
+        } else if segue.identifier == "userLinkSegue" {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let object = imageObjects![indexPath.section]
+                let userController = segue.destination as! UserController
+                userController.user = object["author"] as! PFUser
             }
         }
     }

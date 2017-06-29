@@ -23,13 +23,20 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
     @IBOutlet weak var userLabel: UILabel!
     
     var imageObjects: [PFObject]?
+    var user: PFUser?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        onRefresh()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if user == nil {
+            user = PFUser.current()
+        }
         onRefresh()
         collectionView.dataSource = self
-        userLabel.text = PFUser.current()?.username
-        let user = PFUser.current()
+        userLabel.text = self.user!.username
         if let profileImage = user!["profileImage"] {
             let image = profileImage as! PFFile
             image.getDataInBackground { (imageData:Data!,error: Error?) in
@@ -47,6 +54,10 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         settingsButton.layer.cornerRadius = 5
         settingsButton.layer.borderWidth = 1
         settingsButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        collectionView.insertSubview(refreshControl, at: 0)
 
     }
 
@@ -88,7 +99,7 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         query.addDescendingOrder("createdAt")
         query.limit = 20
         query.includeKey("author")
-        // fetch data asynchronously
+        query.whereKey("author", equalTo: self.user!)
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if posts != nil {
                 self.imageObjects = posts
@@ -129,7 +140,35 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         }
     }
     
-
+    
+    
+    // Refresh Control Action
+    // ==========================
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        let query = PFQuery(className: "Post")
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+        query.includeKey("author")
+        // fetch data asynchronously
+        query.whereKey("author", equalTo: self.user!)
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if posts != nil {
+                self.imageObjects = posts
+                self.collectionView.reloadData()
+                refreshControl.endRefreshing()
+                if posts != nil {
+                    self.postsLabel.text = String(posts!.count)
+                    print("num")
+                } else {
+                    self.postsLabel.text = "0"
+                }
+                
+            } else {
+                print(error?.localizedDescription ?? "General Error")
+            }
+        }
+    }
+    
     
     // Change Profile Picture
     // ========================

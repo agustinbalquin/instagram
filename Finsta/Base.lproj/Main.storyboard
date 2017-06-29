@@ -102,20 +102,24 @@
                                                     <rect key="frame" x="8" y="1" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h61-6Z-cvW">
-                                                    <rect key="frame" x="54" y="8" width="165" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8P-kR-f1s">
+                                                    <rect key="frame" x="54" y="3" width="82" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="Username">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="userLink:" destination="fbc-IC-IMK" eventType="touchUpInside" id="Opf-dS-UiJ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="userPhoto" destination="PFN-Km-FXW" id="7Ho-jW-QpJ"/>
-                                            <outlet property="usernameLabel" destination="h61-6Z-cvW" id="8Ga-X1-NaR"/>
+                                            <outlet property="usernameButton" destination="t8P-kR-f1s" id="xWb-F2-fVE"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="435" id="bXA-FH-zJg" customClass="ImagePostCell" customModule="Finsta" customModuleProvider="target">
@@ -164,7 +168,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="ayL-UM-dGs" id="I4S-Kh-GYn"/>
                                             <outlet property="imagePost" destination="SKu-Tr-OMx" id="Ue2-VJ-U2I"/>
-                                            <segue destination="PpL-aM-waH" kind="show" id="w8m-7C-dp5"/>
+                                            <segue destination="PpL-aM-waH" kind="show" identifier="detailSegue" id="w8m-7C-dp5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actionCell" rowHeight="53" id="h2O-Dh-yoo" customClass="ActionCell" customModule="Finsta" customModuleProvider="target">
@@ -225,10 +229,10 @@
                     <connections>
                         <outlet property="tableView" destination="VHl-XA-fEz" id="lDZ-Nd-lZb"/>
                         <segue destination="2YG-Lk-UCu" kind="presentation" identifier="postSegue" id="gD2-fv-aR7"/>
+                        <segue destination="Ert-cn-WIN" kind="show" identifier="userLinkSegue" id="3aS-Rr-w8Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZJ-9X-9Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="H8E-8Y-AUk"/>
             </objects>
             <point key="canvasLocation" x="2967.1999999999998" y="136.28185907046478"/>
         </scene>
@@ -334,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEc-3F-v0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3936.8000000000002" y="892.80359820089961"/>
+            <point key="canvasLocation" x="3937" y="901"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Gxj-eV-Vai">
@@ -479,7 +483,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2028" y="951.27436281859082"/>
+            <point key="canvasLocation" x="2028" y="901"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pEV-V3-0uv">
@@ -498,7 +502,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVy-ah-aHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="951.27436281859082"/>
+            <point key="canvasLocation" x="1089" y="901"/>
         </scene>
     </scenes>
     <resources>
@@ -510,4 +514,7 @@
         <image name="profile_tab" width="25" height="25"/>
         <image name="user" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3aS-Rr-w8Y"/>
+    </inferredMetricsTieBreakers>
 </document>
