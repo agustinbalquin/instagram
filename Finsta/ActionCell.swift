@@ -13,7 +13,8 @@ class ActionCell: UITableViewCell {
 
     @IBOutlet weak var likeLabel: UILabel!
 
-    
+    @IBOutlet weak var likeButton: UIButton!
+    var liked = false
     
     var imageObject: PFObject? {
         didSet {
@@ -39,10 +40,20 @@ class ActionCell: UITableViewCell {
     @IBAction func likePost(_ sender: Any) {
         let object = imageObject!
         var likes = object["likesCount"] as! Int
-        likes += 1
+        
+        if liked == false {
+            likes += 1
+            likeButton.setImage(UIImage(named: "heartbeating.png"), for: .normal)
+            
+        } else {
+            likes -= 1
+            likeButton.setImage(UIImage(named: "heartbeat.png"), for: .normal)
+        }
+        liked = !liked
         object["likesCount"] = likes
         object.saveInBackground()
         likeLabel.text = "\(likes) likes"
+        
 
     }
     
