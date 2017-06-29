@@ -26,6 +26,7 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onRefresh()
         collectionView.dataSource = self
         userLabel.text = PFUser.current()?.username
         let user = PFUser.current()
@@ -46,9 +47,6 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         settingsButton.layer.cornerRadius = 5
         settingsButton.layer.borderWidth = 1
         settingsButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
-        onRefresh()
 
     }
 
@@ -95,6 +93,12 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
             if posts != nil {
                 self.imageObjects = posts
                 self.collectionView.reloadData()
+                if posts != nil {
+                    self.postsLabel.text = String(posts!.count)
+                    print("num")
+                } else {
+                    self.postsLabel.text = "0"
+                }
                 
             } else {
                 print(error?.localizedDescription ?? "General Error")

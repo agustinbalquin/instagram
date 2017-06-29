@@ -33,6 +33,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [x] User post count is shown in Profile
 - [x] User can upload a profile picture
 - [x] Style the login page to look like the real Instagram login page
 - [x] User Section Headers
