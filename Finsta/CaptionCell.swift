@@ -9,7 +9,10 @@
 import UIKit
 
 class CaptionCell: UITableViewCell {
+    @IBOutlet weak var timeSinceLabel: UILabel!
 
+    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

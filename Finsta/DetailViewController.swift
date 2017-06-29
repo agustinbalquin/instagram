@@ -22,12 +22,14 @@ class DetailViewController: UIViewController {
         
         let message = imageObject!["caption"] as! String
         let image = imageObject!["media"] as! PFFile
-        if let date = imageObject!["creationDate"]{
-            dateLabel.text = date as! String
+        if let date = imageObject!.createdAt {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            let dateString = dateFormatter.string(from: date)
+            dateLabel.text = dateString // Prints: Jun 28, 2017, 2:08 PM
         }
-        else {
-            dateLabel.text = "Unknown Date"
-        }
+
         captionLabel.text = message
         image.getDataInBackground { (imageData:Data!,error: Error?) in
             self.detailImage.image = UIImage(data:imageData)
