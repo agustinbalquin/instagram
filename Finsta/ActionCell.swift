@@ -52,11 +52,11 @@ class ActionCell: UITableViewCell {
         
         if liked == false {
             likes += 1
-            likeButton.setImage(UIImage(named: "heartbeating.png"), for: .normal)
+            likeButton.setImage(UIImage(named: "likedbutton"), for: .normal)
             
         } else {
             likes -= 1
-            likeButton.setImage(UIImage(named: "heartbeat.png"), for: .normal)
+            likeButton.setImage(UIImage(named: "likebutton"), for: .normal)
         }
         liked = !liked
         object["likesCount"] = likes

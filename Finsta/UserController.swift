@@ -45,6 +45,9 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
             }
         
         }
+        
+        self.title = user?.username
+        
         editProfile.backgroundColor = .clear
         editProfile.layer.cornerRadius = 5
         editProfile.layer.borderWidth = 1

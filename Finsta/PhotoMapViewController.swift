@@ -36,7 +36,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.onRefresh()
         
-        
+        let image = UIImage(named: "finstalogo")
+        self.navigationItem.titleView = UIImageView(image: image)
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)

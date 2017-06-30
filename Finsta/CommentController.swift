@@ -49,7 +49,6 @@ class CommentController: UIViewController,  UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
         if comments != nil {
-            print("its getting here")
             let comment = comments![indexPath.row]
             cell.commentLabel.text = comment["caption"] as! String
             let user = comment["author"] as! PFUser
@@ -61,16 +60,39 @@ class CommentController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     
     @IBAction func sendComment(_ sender: Any) {
-        let caption = commentField.text
-        Comment.postComment(post: self.post!, withCaption: caption) { (success: Bool, error: Error?) in
-            print("commentPosted")
-            
-            var commentNum = self.post!["commentsCount"] as! Int
-            commentNum += 1
-            self.post!["commentsCount"] = commentNum
-            self.post!.saveInBackground()
-            print("commentPosted")
+        if fieldCheck() {
+            let caption = commentField.text
+            Comment.postComment(post: self.post!, withCaption: caption) { (success: Bool, error: Error?) in
+                print("commentPosted")
+                
+                var commentNum = self.post!["commentsCount"] as! Int
+                commentNum += 1
+                self.post!["commentsCount"] = commentNum
+                self.post!.saveInBackground()
+                print("commentPosted")
+                self.onRefresh()
+                self.commentField.text = ""
+            }
         }
+
+    }
+    
+    func fieldCheck() -> Bool{
+        if commentField.text!.isEmpty {
+            let alertController = UIAlertController(title: "Error", message: "Comment Field  is empty", preferredStyle: .alert)
+            
+            // create an OK action
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                // handle response here.
+            }
+            alertController.addAction(OKAction)
+            
+            present(alertController, animated: true) {
+            
+            }
+            return false
+        }
+        return true
 
     }
     

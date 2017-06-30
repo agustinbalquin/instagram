@@ -158,7 +158,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO3-yi-kHL">
                                                     <rect key="frame" x="8" y="0.0" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="heartbeat"/>
+                                                    <state key="normal" image="likebutton"/>
                                                     <connections>
                                                         <action selector="likePost:" destination="h2O-Dh-yoo" eventType="touchUpInside" id="1ml-1R-CBt"/>
                                                     </connections>
@@ -173,7 +173,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgn-Sh-2It">
                                                     <rect key="frame" x="45" y="0.0" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="commmmit"/>
+                                                    <state key="normal" image="realcomment"/>
                                                     <connections>
                                                         <action selector="commentPost:" destination="h2O-Dh-yoo" eventType="touchUpInside" id="7ZE-qP-bU7"/>
                                                     </connections>
@@ -237,13 +237,13 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="hcW-r0-MU7">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LM6-a2-nuH">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="g2N-1U-NqY">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="VZd-Py-yVq">
+                                <rect key="frame" x="335" y="11" width="24" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post"/>
+                                <state key="normal" image="camera"/>
                                 <connections>
-                                    <action selector="postPhoto:" destination="bcB-QL-RWG" eventType="touchUpInside" id="NDI-bH-wZp"/>
+                                    <action selector="postPhoto:" destination="bcB-QL-RWG" eventType="touchUpInside" id="mha-dw-nJQ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -572,6 +572,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle-256" translatesAutoresizingMaskIntoConstraints="NO" id="hE5-lL-SrZ">
+                                <rect key="frame" x="88" y="145" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHr-Tj-paZ">
+                                <rect key="frame" x="212" y="105" width="61" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="956" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbw-Tf-t8G">
+                                <rect key="frame" x="226" y="86" width="32" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvY-ch-NRZ">
+                                <rect key="frame" x="283" y="105" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="346" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm4-VF-B4T">
+                                <rect key="frame" x="292" y="86" width="32" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -592,13 +622,15 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2028" y="901"/>
+            <point key="canvasLocation" x="2028" y="900.89955022488766"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="pEV-V3-0uv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fad-vx-mss" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" selectedImage="profile_tab" id="msY-KZ-8EW"/>
+                    <tabBarItem key="tabBarItem" title="" image="profile_tab" id="msY-KZ-8EW">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xZ-L5-QQs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -615,13 +647,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="commmmit" width="240" height="240"/>
+        <image name="camera" width="24" height="21"/>
+        <image name="circle-256" width="159" height="159"/>
         <image name="feed_tab" width="25" height="25"/>
         <image name="gear" width="16" height="16"/>
-        <image name="heartbeat" width="256" height="256"/>
         <image name="instagram_gradient" width="5120" height="2880"/>
         <image name="intsagramLogo-1" width="1785" height="612"/>
+        <image name="likebutton" width="50" height="50"/>
         <image name="profile_tab" width="25" height="25"/>
+        <image name="realcomment" width="50" height="50"/>
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
