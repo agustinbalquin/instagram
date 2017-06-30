@@ -11,6 +11,7 @@ import Parse
 
 class CommentController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentField: UITextField!
     var post:PFObject? {
@@ -23,10 +24,23 @@ class CommentController: UIViewController,  UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.onRefresh()
-        
+
         commentTableView.delegate = self
         commentTableView.dataSource = self
         commentTableView.reloadData()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            print("Did show")
+            let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            self.bottomConstraint.constant = frame.height
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            print("Did Hide")
+            let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            self.bottomConstraint.constant = 0//frame.height
+            
+        }
 
     }
 
@@ -56,6 +70,12 @@ class CommentController: UIViewController,  UITableViewDataSource, UITableViewDe
             cell.timeSinceLabel.text = comment.createdAt?.getElapsedInterval()
         }
         return cell
+    }
+    
+    
+    
+    @IBAction func closeKeyboard(_ sender: Any) {
+        view.endEditing(true)
     }
     
     
@@ -115,4 +135,5 @@ class CommentController: UIViewController,  UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
 }

@@ -295,11 +295,23 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         performSegue(withIdentifier: "userLinkSegue", sender: self)
     }
     
-   
 
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+// Action Cell Delegate
+// ========================
 
 extension PhotoMapViewController: ActionCellDelegate {
     
@@ -307,9 +319,6 @@ extension PhotoMapViewController: ActionCellDelegate {
         performSegue(withIdentifier: "commentsSegue", sender: actionCell)
     }
 }
-
-
-
 
 
 
