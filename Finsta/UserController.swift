@@ -199,8 +199,8 @@ class UserController: UIViewController, UICollectionViewDataSource, UIImagePicke
         
         let pffile = Post.getPFFileFromImage(image: editedImage)
         let user = PFUser.current()!
-        user.saveInBackground()
         user["profileImage"] = pffile
+        user.saveInBackground()
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
