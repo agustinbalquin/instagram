@@ -7,4 +7,5 @@ target 'Finsta' do
 
   # Pods for Finsta
   pod 'Parse'
+  pod 'MBProgressHUD'
 end

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -47,30 +48,34 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func sendPost(_ sender: Any) {
         let caption = captionField.text ?? ""
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         if imageView.image == nil {
             let alertController = UIAlertController(title: "Post Failed", message: "Image was not selected", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action) in }
             alertController.addAction(OKAction)
             self.present(alertController, animated: true) { }
-
+            
             return
         }
         Post.postUserImage(image: imageView.image, withCaption: caption) { (success: Bool,error: Error?) in
             if success {
-                let alertController = UIAlertController(title: "Success", message: "Image was posted to Instagram", preferredStyle: .alert)
-                
-                // create an OK action
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in }
-                alertController.addAction(OKAction)
-                
-                self.present(alertController, animated: true) { }
-                
+//                let alertController = UIAlertController(title: "Success", message: "Image was posted to Instagram", preferredStyle: .alert)
+//                
+//                // create an OK action
+//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in }
+//                alertController.addAction(OKAction)
+//                
+//                self.present(alertController, animated: true) { }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.dismiss(animated: true, completion: nil)
                 
             } else if let error = error {
                 print("Problem posting: \(error.localizedDescription)")
+                MBProgressHUD.hide(for: self.view, animated: true)
+                
             }
         }
-        self.dismiss(animated: true, completion: nil)
+        
     }
 
     func imagePickerController(_ picker: UIImagePickerController,
