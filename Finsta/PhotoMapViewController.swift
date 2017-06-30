@@ -26,6 +26,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     var photoHeaderViewHeight:CGFloat = 45
     var linkedUser: PFUser?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
